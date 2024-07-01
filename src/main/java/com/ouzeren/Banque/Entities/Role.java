@@ -10,11 +10,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends AbstractEntity{
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+	
 
 	private String nom;
 
@@ -22,13 +20,7 @@ public class Role {
 	@JoinColumn(name = "id_user")
 	private User user;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public String getNom() {
 		return nom;
