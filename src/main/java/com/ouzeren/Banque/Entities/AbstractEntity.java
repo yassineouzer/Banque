@@ -2,18 +2,36 @@ package com.ouzeren.Banque.Entities;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
+
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public class AbstractEntity {
 
 	@Id
 	@GeneratedValue
 	private Integer id;
+
+	@CreatedDate
+	@Column(name="createdDate",
+	nullable = false,
+	updatable = false)
+	private LocalDateTime createdDate;
+     
 	
-	
+	@LastModifiedDate
+	@Column(name="LastModifiedDate")
+	private LocalDateTime LastModifiedDate;
+
 	public Integer getId() {
 		return id;
 	}
@@ -22,23 +40,24 @@ public class AbstractEntity {
 		this.id = id;
 	}
 
-	public LocalDateTime getCreationDate() {
-		return creationDate;
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public LocalDateTime getLastUpdated() {
-		return lastUpdated;
+	public LocalDateTime getLastModifiedDate() {
+		return LastModifiedDate;
 	}
 
-	public void setLastUpdated(LocalDateTime lastUpdated) {
-		this.lastUpdated = lastUpdated;
+	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+		LastModifiedDate = lastModifiedDate;
 	}
 
-	private LocalDateTime creationDate;
-	
-	private LocalDateTime lastUpdated;
+
+
+
+
 }

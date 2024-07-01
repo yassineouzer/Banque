@@ -16,6 +16,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Positive;
 
 
 
@@ -25,7 +28,9 @@ import jakarta.persistence.Table;
 public class Transaction extends AbstractEntity{
 
    
-	
+	@Positive
+	@Max(value = 1000000000)
+	@Min(value = 10)
 	private BigDecimal amount;
 	
 	private String destinationIban;
