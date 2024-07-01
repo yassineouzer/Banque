@@ -13,9 +13,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+
 
 	private String firstname;
 
@@ -26,9 +24,9 @@ public class User {
 	private boolean active;
 
 
-	 @OneToMany(mappedBy = "user") private List<Transaction> transactions;
+	@OneToMany(mappedBy = "user") 
+	private List<Transaction> transactions;
 	
-
 	@OneToMany(mappedBy = "user")
 	private List<Contact> contacts;
 
@@ -49,13 +47,7 @@ public class User {
 		this.active = active;
 	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getFirstname() {
 		return firstname;

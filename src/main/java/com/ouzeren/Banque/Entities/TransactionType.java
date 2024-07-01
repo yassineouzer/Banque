@@ -8,7 +8,9 @@
   
   public enum TransactionType {
    
-	  versement;
+	  versement,
+	  virement;
+	  
   
   
   }
